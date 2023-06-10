@@ -9,10 +9,18 @@ export interface Product {
     stock: number;
     garantia: number;
     iva: number;
-  }
+  };
   
   export interface Image {
     nombre: string;
     id_producto_imagen: number;
     orden: number;
+  };
+
+  export interface Client {
+    nombre: string;
+    apellido: string;
+    DNI:number;
+    mail: string;
+    telefono: string;
   }
