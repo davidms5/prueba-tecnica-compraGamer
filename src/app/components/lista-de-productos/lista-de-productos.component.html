@@ -1,0 +1,40 @@
+
+<mat-form-field>
+  <mat-label>Filtrar por subcategoría</mat-label>
+  <mat-select [(value)]="subcategoriaSeleccionada">
+    <mat-option value="">Todas las subcategorías</mat-option>
+    <mat-option *ngFor="let subcategoria of Subcategorias" [value]="subcategoria.id">
+      {{ subcategoria.nombre }}
+      
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<a  routerLink="/carrito" style="color: black;">
+<div class="cart-icon-container">
+  <mat-icon class="cart-icon mat-12">shopping_cart</mat-icon>
+  <span class="cart-badge mat-badge mat-badge-overlap mat-badge-above mat-badge-medium mat-accent"
+    [matBadge]="cantidadArticulosCarrito" style="transform: scale(0.3); top: -6px; right: -2px;" matBadgeColor="warn"></span>
+</div>
+</a>
+
+<div *ngIf="subcategoriaSeleccionada">
+  <img [src]="getBannerImageUrl(subcategoriaSeleccionada)" alt="Banner de subcategoría" />
+</div>
+
+<mat-grid-list cols="3" gutterSize="14px">
+    <mat-grid-tile *ngFor="let producto of productos | filterBySubcategoria:subcategoriaSeleccionada">
+      <mat-card>
+        
+        <mat-card-title class="custom-primary">{{ producto.nombre }}</mat-card-title>
+        <mat-card-content>
+          <img [src]="'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_' + producto.imagenes[0].nombre + '-med.jpg'" alt="Imagen del producto" />
+          <p>Precio: ${{ producto.precio }}</p>
+          <p>Subcategoría: {{ obtenerNombreSubcategoria(producto.id_subcategoria) }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
