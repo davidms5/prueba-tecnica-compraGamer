@@ -23,4 +23,12 @@ export interface Product {
     DNI:number;
     mail: string;
     telefono: string;
-  }
+  };
+
+export interface Subcategorias {
+  id: number;
+  nombre: string;
+  id_agrupador: number;
+  imagen: string;
+  orden: number;
+}

@@ -1,19 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import { Observable } from 'rxjs';
-import { Client, Product } from './interfaces/structureDataEcommerce';
+import { Client } from '../interfaces/structureDataEcommerce';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductosServiceService {
+export class StoreDataUserService {
 
-  constructor(private http: HttpClient) { }
-
-  getProductos(): Observable<Product[]>{
-    return this.http.get<Product[]>("https://static.compragamer.com/test/productos.json")
-  };
-
+  constructor() { }
   storeClientData(user: Client){
     localStorage.setItem('usuario', JSON.stringify(user));
   };
@@ -25,6 +18,5 @@ export class ProductosServiceService {
 
   deleteStoredClientData(){
     localStorage.removeItem("usuario");
-  }
-
+  };
 }
