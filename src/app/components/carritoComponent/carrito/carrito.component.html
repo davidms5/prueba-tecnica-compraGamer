@@ -1,0 +1,14 @@
+<p>carrito works!</p>
+
+<h2>Carrito de compras</h2>
+<mat-card *ngFor="let item of carrito">
+    <mat-card-header>
+      <mat-card-title>{{ item.producto.nombre }}</mat-card-title>
+      <mat-card-subtitle>Precio: ${{ item.producto.precio }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <img [src]="'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_' + item.producto.imagenes[0].nombre + '-med.jpg'" alt="Imagen del producto" />
+      Cantidad: {{ item.cantidad }}
+    </mat-card-content>
+  </mat-card>
+<a routerLink="/productos">volver</a>

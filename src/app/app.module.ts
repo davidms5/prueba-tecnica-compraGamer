@@ -10,12 +10,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FilterBySubcategoriaPipe } from './components/lista-de-productos/filterBySubcategoria.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { CarritoComponent } from './components/carritoComponent/carrito/carrito.component';
+import { FilterDuplicatesByPropertyPipe } from './components/carritoComponent/filterDuplicatesByProperty.pipe';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaDeProductosComponent,
     FilterBySubcategoriaPipe,
+    CarritoComponent,
+    FilterDuplicatesByPropertyPipe,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,9 @@ import { FilterBySubcategoriaPipe } from './components/lista-de-productos/filter
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

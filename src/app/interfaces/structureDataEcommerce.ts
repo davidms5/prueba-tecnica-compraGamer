@@ -32,3 +32,8 @@ export interface Subcategorias {
   imagen: string;
   orden: number;
 }
+
+export interface CartItem {
+  producto: Product;
+  cantidad: number;
+}

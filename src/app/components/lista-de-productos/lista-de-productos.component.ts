@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product, Subcategorias } from 'src/app/interfaces/structureDataEcommerce';
 import { ProductosServiceService } from 'src/app/services/productos-service.service';
 import { ThemePalette } from '@angular/material/core';
+import { CarritoService } from 'src/app/services/carritoLogic/carrito.service';
 
 @Component({
   selector: 'app-lista-de-productos',
@@ -13,16 +14,29 @@ export class ListaDeProductosComponent implements OnInit{
   color: ThemePalette = "primary";
   productos: Product[];
   Subcategorias: Subcategorias[];
-  subcategoriaSeleccionada: string = ""
+  subcategoriaSeleccionada: string;
+  cantidadArticulosCarrito: number;
 
-  constructor(private productosService: ProductosServiceService) {
+  constructor(private productosService: ProductosServiceService, private carritoService: CarritoService) {
     this.productos = [];
     this.Subcategorias = [];
+    this.subcategoriaSeleccionada = ""
+    this.cantidadArticulosCarrito = 0;
   }
 
   ngOnInit() {
     this.obtenerProductos();
     this.obtenerSubcategorias();
+   
+  }
+
+  ngDoCheck() {
+    this.actualizarCantidadArticulosCarrito();
+  }
+
+  agregarAlCarrito(producto: Product) {
+    this.carritoService.agregarAlCarrito(producto);
+    this.actualizarCantidadArticulosCarrito();
   }
 
   obtenerProductos() {
@@ -44,4 +58,18 @@ export class ListaDeProductosComponent implements OnInit{
     return subcategoria ? subcategoria.nombre : '';
   }
   
+  actualizarCantidadArticulosCarrito() {
+    this.cantidadArticulosCarrito = this.carritoService.obtenerCantidadArticulos();
+  }
+
+  getBannerImageUrl(subcategoriaId: number | string): string {
+    const staticPart = 'https://compragamer.net/categorias_demo/';
+    const subcategoria = this.Subcategorias.find(sub => sub.id === subcategoriaId);
+    if (subcategoria) {
+      
+      return staticPart + subcategoria.imagen;
+    } else {
+      return ''; 
+    }
+  }
 }
