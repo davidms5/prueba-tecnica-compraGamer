@@ -1,0 +1,36 @@
+<div>
+<h2>nuevo usuario</h2>
+</div>
+
+<form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+    <mat-form-field>
+      <input matInput formControlName="nombre" placeholder="Nombre">
+      <mat-error *ngIf="registrationForm.controls['nombre'].hasError('required')">El nombre es requerido</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="apellido" placeholder="Apellido">
+      <mat-error *ngIf="registrationForm.controls['apellido'].hasError('required')">El apellido es requerido</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="dni" placeholder="DNI">
+      <mat-error *ngIf="registrationForm.controls['dni'].hasError('required')">El DNI es requerido</mat-error>
+      <mat-error *ngIf="registrationForm.controls['dni'].hasError('pattern')">El DNI debe tener 8 dígitos</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="mail" placeholder="Correo electrónico">
+      <mat-error *ngIf="registrationForm.controls['mail'].hasError('required')">El correo electrónico es requerido</mat-error>
+      <mat-error *ngIf="registrationForm.controls['mail'].hasError('email')">El correo electrónico no es válido</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="telefono" placeholder="Teléfono">
+      <mat-error *ngIf="registrationForm.controls['telefono'].hasError('required')">El teléfono es requerido</mat-error>
+    </mat-form-field>
+  
+    <br>
+    <button mat-raised-button color="primary" type="submit">Registrar</button>
+  </form>
+  

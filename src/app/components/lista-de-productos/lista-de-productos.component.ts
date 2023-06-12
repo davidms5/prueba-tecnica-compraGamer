@@ -3,7 +3,8 @@ import { Product, Subcategorias } from 'src/app/interfaces/structureDataEcommerc
 import { ProductosServiceService } from 'src/app/services/productos-service.service';
 import { ThemePalette } from '@angular/material/core';
 import { CarritoService } from 'src/app/services/carritoLogic/carrito.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { UserFormComponent } from '../userRegistration/user-form/user-form.component';
 @Component({
   selector: 'app-lista-de-productos',
   templateUrl: './lista-de-productos.component.html',
@@ -17,7 +18,7 @@ export class ListaDeProductosComponent implements OnInit{
   subcategoriaSeleccionada: string;
   cantidadArticulosCarrito: number;
 
-  constructor(private productosService: ProductosServiceService, private carritoService: CarritoService) {
+  constructor(private productosService: ProductosServiceService, private carritoService: CarritoService, private dialog: MatDialog) {
     this.productos = [];
     this.Subcategorias = [];
     this.subcategoriaSeleccionada = ""
@@ -32,6 +33,12 @@ export class ListaDeProductosComponent implements OnInit{
 
   ngDoCheck() {
     this.actualizarCantidadArticulosCarrito();
+  };
+
+  openRegistrationForm(): void {
+    this.dialog.open(UserFormComponent, {
+      width: '400px', // Ajusta el ancho del formulario de registro
+    });
   }
 
   agregarAlCarrito(producto: Product) {

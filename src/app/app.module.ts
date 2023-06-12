@@ -14,6 +14,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { CarritoComponent } from './components/carritoComponent/carrito/carrito.component';
 import { FilterDuplicatesByPropertyPipe } from './components/carritoComponent/filterDuplicatesByProperty.pipe';
 import { MatBadgeModule } from '@angular/material/badge';
+import { UserFormComponent } from './components/userRegistration/user-form/user-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { ShowUsersComponent } from './components/userRegistration/show-users/show-users.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     FilterBySubcategoriaPipe,
     CarritoComponent,
     FilterDuplicatesByPropertyPipe,
+    UserFormComponent,
+    ShowUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +41,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatSelectModule,
     MatIconModule,
     MatBadgeModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,8 @@
   </mat-select>
 </mat-form-field>
 
+<button mat-raised-button color="primary" (click)="openRegistrationForm()">Registrar usuario</button>
+
 <a  routerLink="/carrito" style="color: black;">
 <div class="cart-icon-container">
   <mat-icon class="cart-icon mat-12">shopping_cart</mat-icon>
@@ -18,6 +20,7 @@
 </div>
 </a>
 
+<a routerLink="/usuarios"><button>usuarios registrados</button></a>
 <div *ngIf="subcategoriaSeleccionada">
   <img [src]="getBannerImageUrl(subcategoriaSeleccionada)" alt="Banner de subcategoría" />
 </div>
